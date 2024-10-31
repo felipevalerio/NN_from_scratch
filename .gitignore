@@ -1,0 +1,3 @@
+# Ignorar arquivos executáveis e objetos
+*.exe
+*.o
