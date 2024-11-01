@@ -1,38 +1,8 @@
-#include "iostream"
 #include "vector"
+#include "iostream"
+#include "functions.h"
 #include <iomanip>
 
-
-template<typename T>
-void printMatrix(const std::vector<std::vector<T>>& matrix) {
-
-    for (const auto& row : matrix) {
-        for (const auto& val : row) {
-            std::cout << std::setw(4) << val;
-        }
-        std::cout << std::endl;
-    }
-}
-
-
-template<typename T>
-std::vector<std::vector<T>> transpose(const std::vector<std::vector<T>>& matrix) {
-    
-    size_t rows = matrix.size();
-    size_t cols = matrix[0].size();
-    
-    // Cria nova matriz com dimensões invertidas
-    std::vector<std::vector<T>> matrix_transposed(cols, std::vector<T>(rows));
-    
-    // Realiza a transposição
-    for (size_t i = 0; i < rows; i++) {
-        for (size_t j = 0; j < cols; j++) {
-            matrix_transposed[j][i] = matrix[i][j];
-        }
-    }
-    
-    return matrix_transposed;
-}
 
 int main() {
 
