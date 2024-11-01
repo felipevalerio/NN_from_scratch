@@ -46,5 +46,3 @@ int main() {
 	// vetor = 1 dimensão
 	// matriz = 2 dimensões
 	// tensor = 3 dimensões ou mais
-
-// clang++ -Wall -Wextra dot_product.cc -o dot_product.exe

@@ -1,9 +1,9 @@
 CXX = clang++
 CXXFLAGS = -std=c++14 -Wall -Wextra -Werror
 
-SRC_FILES = batch_data.cpp
+SRC_FILES = matrix_transposing.cpp
 OBJ_FILES = $(SRC_FILES:.cpp=.o)
-EXECUTABLE = batch_data
+EXECUTABLE = matrix_transposing
 
 
 # Regra padrão para construir o projeto
