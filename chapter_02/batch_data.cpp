@@ -1,38 +1,45 @@
 #include "iostream"
 #include "vector"
 #include "functions.h"
+#include <iomanip>
 
 
 int main() {
 
-	std::vector<double> layer_output;
+	std::vector<std::vector<double>> layer_output;
 	std::vector<double> bias = {2.0, 3.0, 0.5};
 
 	std::vector<std::vector<double>> inputs = {
-														{1.0, 2.0, 3.0, 2.5},
-														{2.0, 5.0, -1.0, 2.0},
-														{-1.5, 2.7, 3.3, -0.8}
-													};
+													{1.0, 2.0, 3.0, 2.5},
+													{2.0, 5.0, -1.0, 2.0},
+													{-1.5, 2.7, 3.3, -0.8}
+												};
 	std::vector<std::vector<double>> weights = {
 													{0.2, 0.8, -0.5, 1.0},
 													{0.5, -0.91, 0.26, -0.5},
 													{-0.26, -0.27, 0.17, 0.87}
 												};
+	auto weights_transposed = transpose(weights);
 
+    for (size_t i = 0; i < weights.size(); ++i) {
+        double output = 0.0;   
+		std::vector<double> output_row; 
+        
+        for (size_t j = 0; j < inputs.size(); ++j) {
+            for (size_t k = 0; k < inputs[j].size(); ++k) {
+                output += weights_transposed[i][j] * inputs[j][k];
+            }
 
-	for (size_t i = 0; i < weights.size(); ++i) {
-		double output = 0.0;	
-		auto weights_tranposed = transpose(weights);
+			output += bias[i];
+			output_row.push_back(output);	
+        }
 
-		for (size_t j = 0; j < inputs.size(); ++j) {
-			output += weights_tranposed[i][j] * inputs[j];
-		}
-		
-		output += bias[i];
-		layer_output.push_back(output);
+		layer_output.push_back(output_row);
+    }
 
+	std::cout << "\n";
+	printMatrix(layer_output);
 
-	
 
 	return 0;
 }
